@@ -63,6 +63,40 @@ services:
       - /home/mehmetcanak/dockerExample/frontend:/usr/src/app
     networks:
       - frontend-nw
+      
+  frontendtest:
+    image: karapazar/angular-serve:0.19 
+    ports:
+      - "9999:4200"
+    volumes:
+      - /home/mehmetcanak/frontendtest/frontend:/usr/src/app
+    networks:
+      - frontendtest-nw
+
+  backendTest:
+    image: amarsingh3d/apache2.4-php7.2
+    ports:
+      - "9998:80"
+    volumes:
+      - /home/mehmetcanak/frontendtest/backend:/var/www/html/
+    networks:
+      
+      - backendtest-nw
+      - dbtest-nw
+  dbtest:
+    image: mysql:5.6
+    ports:
+      - "9997:3306"
+    environment:
+        MYSQL_DATABASE: myDb
+        MYSQL_USER: user
+        MYSQL_PASSWORD: test
+        MYSQL_ROOT_PASSWORD: test
+    volumes:
+        - /home/mehmetcanak/frontendtest/mysql/:/var/lib/mysql
+    networks:
+        - backendtest-nw
+        - dbtest-nw
 
 
 
@@ -73,3 +107,6 @@ networks:
     frontend-nw :
     backend-nw:
     db-nw:
+    frontendtest-nw :
+    backendtest-nw:
+    dbtest-nw:
