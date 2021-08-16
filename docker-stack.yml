@@ -1,0 +1,75 @@
+version : "3.3"
+
+services:
+  portainer:
+    image : portainer/portainer
+    ports :
+        - 9000:9000
+    command: -H unix:///var/run/docker.sock
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - '/etc/localtime:/etc/localtime:ro'
+  test:
+    image: containous/whoami:latest
+    ports:
+      - 8888:80
+    networks:
+      - frontend-nw
+    deploy:
+      mode: replicated
+      replicas: 2
+  db:
+    image: mysql:5.6
+    ports:
+      - "3306:3306"
+    environment:
+        MYSQL_DATABASE: myDb
+        MYSQL_USER: user
+        MYSQL_PASSWORD: test
+        MYSQL_ROOT_PASSWORD: test
+    volumes:
+        - /home/mehmetcanak/dockerExample/mysql/:/var/lib/mysql
+    networks:
+        - backend-nw
+        - db-nw
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - 7777:80
+    networks:
+        - db-nw
+    environment:
+        MYSQL_USER: user
+        MYSQL_PASSWORD: test
+        MYSQL_ROOT_PASSWORD: test
+  
+  www:
+    image: amarsingh3d/apache2.4-php7.2
+    ports:
+      - "5555:80"
+    volumes:
+      - /home/mehmetcanak/dockerExample/backend:/var/www/html/
+    networks:
+      
+      - backend-nw
+      - db-nw
+
+  frontend:
+    image: karapazar/angular-serve:0.19 
+    ports:
+      - "80:4200"
+    volumes:
+      - /home/mehmetcanak/dockerExample/frontend:/usr/src/app
+    networks:
+      - frontend-nw
+
+
+
+
+
+
+networks:
+    frontend-nw :
+    backend-nw:
+    db-nw:
