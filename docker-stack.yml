@@ -80,27 +80,8 @@ services:
     volumes:
       - /home/mehmetcanak/frontendtest/backend:/var/www/html/
     networks:
-      
       - backendtest-nw
-      - dbtest-nw
-  dbtest:
-    image: mysql:5.6
-    ports:
-      - "9997:3306"
-    environment:
-        MYSQL_DATABASE: myDb
-        MYSQL_USER: user
-        MYSQL_PASSWORD: test
-        MYSQL_ROOT_PASSWORD: test
-    volumes:
-        - /home/mehmetcanak/frontendtest/mysql/:/var/lib/mysql
-    networks:
-        - backendtest-nw
-        - dbtest-nw
-
-
-
-
+      - db-nw
 
 
 networks:
@@ -109,4 +90,3 @@ networks:
     db-nw:
     frontendtest-nw :
     backendtest-nw:
-    dbtest-nw:
