@@ -1,18 +1,18 @@
 version : "3.3"
 
 services:
-  portainer:
-    image : portainer/portainer
-    ports :
-        - 9000:9000
-    command: -H unix:///var/run/docker.sock
-    volumes:
-        - /var/run/docker.sock:/var/run/docker.sock
-        - '/etc/localtime:/etc/localtime:ro'
+  # portainer:
+  #   image : portainer/portainer
+  #   ports :
+  #       - 9000:9000
+  #   command: -H unix:///var/run/docker.sock
+  #   volumes:
+  #       - /var/run/docker.sock:/var/run/docker.sock
+  #       - '/etc/localtime:/etc/localtime:ro'
   test:
     image: containous/whoami:latest
     ports:
-      - 8888:80
+      - 8887:80
     networks:
       - frontend-nw
     deploy:
@@ -21,14 +21,14 @@ services:
   db:
     image: mysql:5.6
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
         MYSQL_DATABASE: myDb
         MYSQL_USER: user
         MYSQL_PASSWORD: test
         MYSQL_ROOT_PASSWORD: test
     volumes:
-        - /home/mehmetcanak/dockerExample/mysql/:/var/lib/mysql
+        - /home/mehmetcanak/sample-app/mysql/:/var/lib/mysql
     networks:
         - backend-nw
         - db-nw
@@ -36,7 +36,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
-        - 7777:80
+        - 7775:80
     networks:
         - db-nw
     environment:
@@ -47,46 +47,46 @@ services:
   www:
     image: amarsingh3d/apache2.4-php7.2
     ports:
-      - "5555:80"
+      - "4444:80"
     volumes:
-      - /home/mehmetcanak/dockerExample/backend:/var/www/html/
+      - /home/mehmetcanak/sample-app/backend:/var/www/html/
     networks:
       
       - backend-nw
-      - db-nw
+      # - db-nw
 
   frontend:
     image: karapazar/angular-serve:0.19 
     ports:
-      - "80:4200"
+      - "8080:4200"
     volumes:
-      - /home/mehmetcanak/dockerExample/frontend:/usr/src/app
+      - /home/mehmetcanak/sample-app/frontend:/usr/src/app
     networks:
       - frontend-nw
       
-  frontendtest:
-    image: karapazar/angular-serve:0.19 
-    ports:
-      - "9999:4200"
-    volumes:
-      - /home/mehmetcanak/frontendtest/frontend:/usr/src/app
-    networks:
-      - frontendtest-nw
+  # frontendtest:
+  #   image: karapazar/angular-serve:0.19 
+  #   ports:
+  #     - "9999:4200"
+  #   volumes:
+  #     - /home/mehmetcanak/frontendtest/frontend:/usr/src/app
+  #   networks:
+  #     - frontendtest-nw
 
-  backendTest:
-    image: amarsingh3d/apache2.4-php7.2
-    ports:
-      - "9998:80"
-    volumes:
-      - /home/mehmetcanak/frontendtest/backend:/var/www/html/
-    networks:
-      - backendtest-nw
-      - db-nw
+  # backendTest:
+  #   image: amarsingh3d/apache2.4-php7.2
+  #   ports:
+  #     - "9998:80"
+  #   volumes:
+  #     - /home/mehmetcanak/frontendtest/backend:/var/www/html/
+  #   networks:
+  #     - backendtest-nw
+  #     - db-nw
 
 
 networks:
     frontend-nw :
     backend-nw:
     db-nw:
-    frontendtest-nw :
-    backendtest-nw:
+    # frontendtest-nw :
+    # backendtest-nw:
