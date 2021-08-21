@@ -64,29 +64,38 @@ services:
     networks:
       - frontend-nw
       
-  # frontendtest:
-  #   image: karapazar/angular-serve:0.19 
-  #   ports:
-  #     - "9999:4200"
-  #   volumes:
-  #     - /home/mehmetcanak/frontendtest/frontend:/usr/src/app
-  #   networks:
-  #     - frontendtest-nw
+  frontendtest:
+    image: karapazar/angular-serve:0.19 
+    ports:
+      - "9999:4200"
+    volumes:
+      - /home/mehmetcanak/frontendtest/frontend:/usr/src/app
+    networks:
+      - frontendtest-nw
 
-  # backendTest:
-  #   image: amarsingh3d/apache2.4-php7.2
-  #   ports:
-  #     - "9998:80"
-  #   volumes:
-  #     - /home/mehmetcanak/frontendtest/backend:/var/www/html/
-  #   networks:
-  #     - backendtest-nw
-  #     - db-nw
+  backendTest:
+    image: amarsingh3d/apache2.4-php7.2
+    ports:
+      - "9998:80"
+    volumes:
+      - /home/mehmetcanak/frontendtest/backend:/var/www/html/
+    networks:
+      - backendtest-nw
+      - db-nw
+
+  frontendGettingStarted:
+    image: karapazar/angular-serve:0.19 
+    ports:
+      - "8085:4200"
+    volumes:
+      - /home/mehmetcanak/sample-app/frontend-getting-started:/usr/src/app
+    networks:
+      - frontendtest-nw
 
 
 networks:
     frontend-nw :
     backend-nw:
     db-nw:
-    # frontendtest-nw :
-    # backendtest-nw:
+    frontendtest-nw :
+    backendtest-nw:
