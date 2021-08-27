@@ -1,0 +1,19 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">PRODUCT ID</th>
+      <th scope="col">NAME</th>
+      <th scope="col">CATEGORY ID</th>
+      <th scope="col">UNİT PRİCE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.productId }}</td>
+      <td>{{ product.productName }}</td>
+      <td>{{ product.categoryId }}</td>
+      <td>{{ product.unitPrice }}</td>
+    </tr>
+  </tbody>
+</table>
