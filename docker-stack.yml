@@ -12,47 +12,47 @@ services:
   test:
     image: containous/whoami:latest
     ports:
-      - 8887:80
+      - 8888:80
     networks:
-      - frontend-nw
+      - frontendtest-nw
     deploy:
       mode: replicated
       replicas: 1
-  db:
-    image: mysql:5.6
-    ports:
-      - "3306:3306"
-    environment:
-        MYSQL_DATABASE: myDb
-        MYSQL_USER: user
-        MYSQL_PASSWORD: test
-        MYSQL_ROOT_PASSWORD: test
-    volumes:
-        - /home/mehmetcanak/sample-app/mysql/:/var/lib/mysql
-    networks:
-        - backend-nw
-        - db-nw
+  # db:
+  #   image: mysql:5.6
+  #   ports:
+  #     - "3306:3306"
+  #   environment:
+  #       MYSQL_DATABASE: myDb
+  #       MYSQL_USER: user
+  #       MYSQL_PASSWORD: test
+  #       MYSQL_ROOT_PASSWORD: test
+  #   volumes:
+  #       - /home/mehmetcanak/sample-app/mysql/:/var/lib/mysql
+  #   networks:
+  #       - backend-nw
+  #       - db-nw
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    ports:
-        - 7777:80
-    networks:
-        - db-nw
-    environment:
-        MYSQL_USER: user
-        MYSQL_PASSWORD: test
-        MYSQL_ROOT_PASSWORD: test
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   ports:
+  #       - 7777:80
+  #   networks:
+  #       - db-nw
+  #   environment:
+  #       MYSQL_USER: user
+  #       MYSQL_PASSWORD: test
+  #       MYSQL_ROOT_PASSWORD: test
   
-  backend:
-    image: amarsingh3d/apache2.4-php7.2
-    ports:
-      - "4444:80"
-    volumes:
-      - /home/mehmetcanak/sample-app/backend:/var/www/html/
-    networks:
-      - backend-nw
-      - db-nw
+  # backend:
+  #   image: amarsingh3d/apache2.4-php7.2
+  #   ports:
+  #     - "4444:80"
+  #   volumes:
+  #     - /home/mehmetcanak/sample-app/backend:/var/www/html/
+  #   networks:
+  #     - backend-nw
+  #     - db-nw
 
   # frontend:
   #   image: karapazar/angular-serve:0.19 
@@ -87,7 +87,7 @@ services:
   #   ports:
   #     - "8085:4200"
   #   volumes:
-  #     - /home/mehmetcanak/sample-app/frontend-getting-started:/usr/src/app
+  #     - /home/mehmet/sample-app/angular-getting-started:/usr/src/app
   #   networks:
   #     - frontendtest-nw
 
@@ -96,13 +96,13 @@ services:
     ports:
       - "80:4200"
     volumes:
-      - /home/mehmetcanak/sample-app/yg-kamp-angular:/usr/src/app
+      - /home/mehmet/sample-app/yg-kamp-angular:/usr/src/app
     networks:
       - frontendtest-nw
 
 networks:
-    frontend-nw :
-    backend-nw:
-    db-nw:
+    # frontend-nw :
+    # backend-nw:
+    # db-nw:
     frontendtest-nw :
-    backendtest-nw:
+    # backendtest-nw:
