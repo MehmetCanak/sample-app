@@ -1,19 +1,22 @@
+<div *ngIf="dataLoaded==false" class="spinner-border text-danger" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
 
-<table class="table">
+<table *ngIf="dataLoaded==true" class="table">
   <thead>
     <tr>
-      <th scope="col">PRODUCT ID</th>
-      <th scope="col">NAME</th>
-      <th scope="col">CATEGORY ID</th>
-      <th scope="col">UNİT PRİCE</th>
+      <th scope="col">userId</th>
+      <th scope="col">id</th>
+      <th scope="col">title</th>
+      <th scope="col">completed</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of products">
-      <td>{{ product.productId }}</td>
-      <td>{{ product.productName }}</td>
-      <td>{{ product.categoryId }}</td>
-      <td>{{ product.unitPrice }}</td>
+    <tr *ngFor="let todo of todos">
+      <td>{{ todo.userId }}</td>
+      <td>{{ todo.id }}</td>
+      <td>{{ todo.title }}</td>
+      <td>{{ todo.completed }}</td>
     </tr>
   </tbody>
 </table>

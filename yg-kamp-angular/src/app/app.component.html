@@ -1,6 +1,13 @@
-merhaba
-<app-navigation></app-navigation>
-<app-category></app-category>
-<app-product></app-product>
-
-<router-outlet></router-outlet>
+<div class="container">
+  <app-navigation></app-navigation>
+  <div class="row">
+    <div class="col-md-3">
+      <app-category></app-category>
+    </div>
+    <div class="col-md-9">
+      <app-product></app-product>
+    </div>
+  </div>
+  <app-todo></app-todo>
+  <router-outlet></router-outlet>
+</div>
