@@ -19,7 +19,7 @@ export class TodoComponent implements OnInit {
   getTodos(){
     this.todoService.getTodos().subscribe(response=>{
       this.todos=response
-      console.log(response);
+      //console.log(response);
       this.dataLoaded=true;
     });
   }
