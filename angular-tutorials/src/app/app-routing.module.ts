@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'heroes', component: HeroesComponent },
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'hero-form', loadChildren: () => import('./hero-form/hero-form.module').then(m => m.HeroFormModule) },
+  { path: 'observables', loadChildren: () => import('./observables/observables.module').then(m => m.ObservablesModule) },
 ];
 
 @NgModule({
