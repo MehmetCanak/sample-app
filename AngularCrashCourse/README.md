@@ -9,7 +9,7 @@ https://www.youtube.com/watch?v=3dHNOWTI7H8
 # Angular Crash Course 2021 (Task Tracker App)
 
 This is the project from the YouTube crash course. It includes the Angular ui as well as JSON-server for our mock backend
-![alt text](https://github.com/mehmetcanak/sample-app/tree/master/AngularCrashCourse/src/assets/task1.PNG?raw=true)
+![](https://github.com/mehmetcanak/sample-app/tree/master/AngularCrashCourse/src/assets/task1.PNG)
 
 
 # Usage
