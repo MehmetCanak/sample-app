@@ -9,12 +9,22 @@ https://www.youtube.com/watch?v=3dHNOWTI7H8
 # Angular Crash Course 2021 (Task Tracker App)
 
 This is the project from the YouTube crash course. It includes the Angular ui as well as JSON-server for our mock backend
+![alt text](https://github.com/mehmetcanak/sample-app/tree/master/AngularCrashCourse/src/assets/task1.PNG?raw=true)
+
 
 # Usage
 
 # Install dependencies
 
 npm install
+
+#  json server install
+npm install -g json-server
+
+json-server --watch db.json
+
+if Error: ENOSPC: System limit for number of file watchers reached angular
+    sudo sysctl -w fs.inotify.max_user_watches=524288
 
 # Run Angular server (http://localhost:4200)
 ng serve
