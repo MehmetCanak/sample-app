@@ -26,8 +26,8 @@ npm install -g json-server
 
 json-server --watch db.json
 
-if Error: ENOSPC: System limit for number of file watchers reached angular
-    sudo sysctl -w fs.inotify.max_user_watches=524288
+if (Error: ENOSPC: System limit for number of file watchers reached angular )
+    (solution : sudo sysctl -w fs.inotify.max_user_watches=524288)
 
 # Run Angular server (http://localhost:4200)
 ng serve
