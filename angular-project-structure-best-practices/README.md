@@ -14,6 +14,5 @@ https://medium.com/nonstopio/application-structure-and-best-practices-of-angular
 
 https://www.freecodecamp.org/news/best-practices-for-a-clean-and-performant-angular-application-288e7b39eb6f/
 
-https://codeburst.io/angular-best-practices-4bed7ae1d0b7
 
 
